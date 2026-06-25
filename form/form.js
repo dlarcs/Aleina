@@ -2,8 +2,7 @@ class ClassForm {
   constructor() {
     const boton_register = document.getElementById("boton_register");
 
-    boton_register.addEventListener("click", (event) => {
-      event.preventDefault();
+    boton_register.addEventListener("click", () => {
       this.register();
     });
   }
@@ -14,17 +13,17 @@ class ClassForm {
     const password = document.getElementById("password");
     const confirmPassword = document.getElementById("confirmPassword");
 
+
+
     const fieldsAreCorrect = this.checkFields(
       name,
       email,
-      password,
-      confirmPassword
+      password
     );
 
     if (!fieldsAreCorrect) {
       return;
     }
-
     const emailIsCorrect = this.checkEmail(email);
 
     if (!emailIsCorrect) {
@@ -36,26 +35,27 @@ class ClassForm {
     if (!passwordIsCorrect) {
       return;
     }
+    alert("Formulario correcto");
 
     const url = "controller/register.php";
 
     const data = {
       action: "register",
-      name: name.value,
-      email: email.value,
-      password: password.value,
-      confirmPassword: confirmPassword.value
+      name : name.value,
+      email : email.value,
+      password : password.value,
+      confirmPassword : confirmPassword.value
     };
 
-    const response = await this.makeRequest(url, data);
+    const response = await this.makeRecuest(url,data);
 
     if (!response) return;
+    alert(response);
 
-    console.log(response);
-    alert(response.message);
-  }
+}
 
-  async makeRequest(url, data) {
+
+  async makeRecuest(url, data) {
     try {
       const response = await fetch(url, {
         method: "POST",
@@ -76,8 +76,7 @@ class ClassForm {
       return null;
     }
   }
-
-  checkFields(name, email, password, confirmPassword) {
+  checkFields(name, email, password) {
     if (name.value.trim() === "") {
       alert("El nombre está vacío");
       return false;
@@ -90,11 +89,6 @@ class ClassForm {
 
     if (password.value.trim() === "") {
       alert("La contraseña está vacía");
-      return false;
-    }
-
-    if (confirmPassword.value.trim() === "") {
-      alert("Debes confirmar la contraseña");
       return false;
     }
 
@@ -125,29 +119,29 @@ class ClassForm {
       return false;
     }
 
-    if (passwordValue !== confirmPasswordValue) {
+    if (password.value.trim() !== confirmPassword.value.trim()) {
       alert("Las contraseñas no coinciden");
       return false;
     }
 
-    return true;
-  }
+      return true;
+    }
 
   checkEmail(email) {
-    const emailValue = email.value.trim();
+  const emailValue = email.value.trim();
 
-    if (!emailValue.includes("@")) {
-      alert("El email debe tener @");
-      return false;
-    }
-
-    if (!emailValue.includes(".")) {
-      alert("El email debe tener un punto");
-      return false;
-    }
-
-    return true;
+  if (!emailValue.includes("@")) {
+    alert("El email debe tener @");
+    return false;
   }
+
+  if (!emailValue.includes(".")) {
+    alert("El email debe tener un punto");
+    return false;
+  }
+
+  return true;
+}
 }
 
 const classForm = new ClassForm();
