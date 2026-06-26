@@ -7,7 +7,7 @@ class ClassForm {
 
     name.value = "laura";
     email.value = "laura@gmail.com";
-    password.value = "Laura@1"
+    password.value = "Laura@1";
     confirmPassword.value = "Laura@1";
 
     const boton_register = document.getElementById("boton_register");

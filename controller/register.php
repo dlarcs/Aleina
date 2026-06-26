@@ -29,16 +29,16 @@ class ClassRegister {
   private function register($data) {
     // echo json_encode($data["password"]);exit;
 
-    echo json_encode([
-      "success" => true,
-      "message" => "Registro recibido correctamente",
-      "name" => $data['name'],
-      "email" => $data['email'],
-      "password" => $data['password']
-    ]);
+    // echo json_encode([
+    //   "success" => true,
+    //   "message" => "Registro recibido correctamente",
+    //   "name" => $data['name'],
+    //   "email" => $data['email'],
+    //   "password" => $data['password']
+    // ]);
   }
 }
-
+  include "../controller/config/database.php"
 $registerClass = new ClassRegister();
 $registerClass->handleRegister();
 
