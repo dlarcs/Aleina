@@ -1,5 +1,15 @@
 class ClassForm {
   constructor() {
+    const name = document.getElementById("name");
+    const email = document.getElementById("email");
+    const password = document.getElementById("password");
+    const confirmPassword = document.getElementById("confirmPassword");
+
+    name.value = "laura";
+    email.value = "laura@gmail.com";
+    password.value = "Laura@1"
+    confirmPassword.value = "Laura@1";
+
     const boton_register = document.getElementById("boton_register");
 
     boton_register.addEventListener("click", () => {
@@ -13,10 +23,6 @@ class ClassForm {
     const password = document.getElementById("password");
     const confirmPassword = document.getElementById("confirmPassword");
 
-    name.value = "laura";
-    email.value = "laura@gmail.com";
-    password.value = "Laura@1"
-    confirmPassword.value = "Laura@1";
 
     const fieldsAreCorrect = this.checkFields(
       name,
