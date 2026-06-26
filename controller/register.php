@@ -4,8 +4,7 @@
    public function  handleRegister(){
      $input = file_get_contents('php://input');
      $data = json_decode($input,true);
-     echo json_encode("lo hicimos");exit;
-     
+
      echo json_encode($data['name']."  ".$data["email"]."  ".$data['password']);
 
      switch ($data['action']) {
@@ -26,7 +25,6 @@
 
   }
 
-echo json_encode("hola");
   $registerClass = new ClassRegister();
   $registerClass -> handleRegister();
  ?>
