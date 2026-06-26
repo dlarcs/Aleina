@@ -35,7 +35,6 @@ class ClassForm {
     if (!passwordIsCorrect) {
       return;
     }
-    alert("Formulario correcto");
 
     const url = "controller/register.php";
 
