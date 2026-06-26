@@ -4,7 +4,7 @@
    public function  handleRegister(){
      $input = file_get_contents('php://input');
      $data = json_decode($input,true);
-
+alert("holaaa");
      echo json_encode("lo hicimos");exit;
      echo json_encode($data['name']."  ".$data["email"]."  ".$data['password']);
 

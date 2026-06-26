@@ -50,7 +50,7 @@ class ClassForm {
     const response = await this.makeRecuest(url,data);
 
     if (!response) return;
-    alert(response);
+    alert(response.message);
 
 }
 
