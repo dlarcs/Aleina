@@ -4,7 +4,6 @@ class ClassRegister {
   public function handleRegister() {
     $input = file_get_contents('php://input');
     $data = json_decode($input, true);
-    echo json_encode($data);exit;
     if (!$data) {
       echo json_encode([
         "success" => false,
@@ -28,6 +27,8 @@ class ClassRegister {
   }
 
   private function register($data) {
+    // echo json_encode($data["password"]);exit;
+
     echo json_encode([
       "success" => true,
       "message" => "Registro recibido correctamente",

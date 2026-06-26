@@ -59,10 +59,9 @@ class ClassForm {
     const response = await this.makeRecuest(url,data);
 
     if (!response) return;
-    alert(response.message);
+    alert(JSON.stringify(response));
 
 }
-
 
   async makeRecuest(url, data) {
     try {
