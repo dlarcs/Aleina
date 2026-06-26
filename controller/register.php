@@ -1,30 +1,47 @@
 <?php
 
-  class ClassRegister {
-   public function  handleRegister(){
-     $input = file_get_contents('php://input');
-     $data = json_decode($input,true);
+class ClassRegister {
 
-     echo json_encode($data['name']."  ".$data["email"]."  ".$data['password']);
+  public function handleRegister() {
 
-     switch ($data['action']) {
-       case 'register':
-           $this->register($data);
-         break;
+    $input = file_get_contents('php://input');
 
+    $data = json_decode($input, true);
 
-       default:
-         // code...
-         break;
-     }
-   }
-   private function register($data){
-     echo json_encode("lo hicimos otra vez");
-   }
+    if (!$data) {
+      echo json_encode([
+        "success" => false,
+        "message" => "No llegaron datos o el JSON está mal"
+      ]);
+      return;
+    }
 
+    switch ($data['action']) {
+      case 'register':
+        $this->register($data);
+        break;
 
+      default:
+        echo json_encode([
+          "success" => false,
+          "message" => "Acción no reconocida"
+        ]);
+        break;
+    }
   }
 
-  $registerClass = new ClassRegister();
-  $registerClass -> handleRegister();
- ?>
+  private function register($data) {
+    echo json_encode([
+      "success" => true,
+      "message" => "lo hicimos otra vez",
+      "name" => $data['name'],
+      "email" => $data['email'],
+      "password" => $data['password']
+    ]);
+  }
+}
+
+$registerClass = new ClassRegister();
+$registerClass->handleRegister();
+
+?>
