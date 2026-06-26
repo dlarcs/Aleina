@@ -6,11 +6,12 @@ class ClassRegister {
     $data = json_decode($input, true);
 
     if (!$data) {
-      echo json_encode("No llegaron datos o el JSON está mal");
+      echo json_encode([
+        "success" => false,
+        "message" => "No llegaron datos"
+      ]);
       return;
     }
-
-    echo json_encode($data);
 
     switch ($data['action']) {
       case 'register':
@@ -18,12 +19,22 @@ class ClassRegister {
         break;
 
       default:
-        echo json_encode("Acción no reconocida");
+        echo json_encode([
+          "success" => false,
+          "message" => "Acción no reconocida"
+        ]);
         break;
     }
   }
 
   private function register($data) {
+    echo json_encode([
+      "success" => true,
+      "message" => "Registro recibido correctamente",
+      "name" => $data['name'],
+      "email" => $data['email'],
+      "password" => $data['password']
+    ]);
   }
 }
 
