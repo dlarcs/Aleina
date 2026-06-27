@@ -27,7 +27,6 @@ class ClassRegister {
   }
 
   private function register($data) {
-    echo json_encode($data["password"]);exit;
 
     // echo json_encode([
     //   "success" => true,
@@ -38,6 +37,8 @@ class ClassRegister {
     // ]);
   }
 }
+echo json_encode($data["password"]);exit;
+
   include "../controller/config/database.php"
 $registerClass = new ClassRegister();
 $registerClass->handleRegister();
